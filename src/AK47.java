@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Created by Jacek on 11.02.2017.
  */
-public class AK47 implements Weapons {
+public class AK47 implements Weapons, Serializable {
     @Override
     public void attack() {
         System.out.println("AK47: 10 dmg.");

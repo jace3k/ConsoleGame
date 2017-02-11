@@ -14,11 +14,12 @@ public class SetChampion implements MenuInterface {
         String sc = scanner.nextLine();
         Character ch = new NoCharacter();
         int charactersSize = Game.getInstance().characters.size();
-        if(Integer.parseInt(sc) <= charactersSize) ch = Game.getInstance().characters.get(Integer.parseInt(sc)-1);
+        if(Integer.parseInt(sc) <= charactersSize) {
+            ch = Game.getInstance().characters.get(Integer.parseInt(sc) - 1);
 
-        if(champNo==1) Game.getInstance().getArena().setPosition1(ch);
-        if(champNo==2) Game.getInstance().getArena().setPosition2(ch);
-
+            if (champNo == 1) Game.getInstance().getArena().setPosition1(ch);
+            if (champNo == 2) Game.getInstance().getArena().setPosition2(ch);
+        }
         return new ArenaMenu();
     }
 }

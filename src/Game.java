@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import static java.lang.System.out;
 
@@ -12,8 +13,13 @@ public class Game {
 
     private Game() {
         arena = new Arena();
-        characters = new ArrayList<>();
+
         menu = new MainMenu();
+        try {
+            characters = (ArrayList<Character>) SerializationUtil.deserialize("characters.xd");
+        } catch (IOException | ClassNotFoundException e) {
+            characters = new ArrayList<>();
+        }
     }
 
     public static Game getInstance() {
@@ -38,7 +44,7 @@ public class Game {
         int i = 1;
         out.println("***********************");
         if (characters.isEmpty()) out.println("No champions.");
-        for (Character c : characters) out.println(" [" + i++ + "] " + c.getName());
+        for (Character c : characters) out.println(" [" + i++ + "] " + c.getName() + " [ WINS: " + c.wins + ", LOSES: " + c.loses + " ]");
         out.println("***********************");
     }
 

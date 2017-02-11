@@ -19,7 +19,7 @@ public class ArenaMenu implements MenuInterface {
         switch(readInfo) {
             case "1": return new SetChampion(1);
             case "2": return new SetChampion(2);
-            case "3": return new FightMenu(Game.getInstance().getArena().getPosition1(),Game.getInstance().getArena().getPosition2());
+            case "3": Game.getInstance().getArena().fight(); return new ArenaMenu();
             case "4": return new MainMenu();
             default: return new ArenaMenu();
         }

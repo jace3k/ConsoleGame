@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Created by Jacek on 11.02.2017.
  */
@@ -33,7 +35,34 @@ public class Arena {
     }
 
     public void fight() {
-
+        if(isReady()) {
+            try {
+                System.out.println("Fighting...");
+                Thread.sleep(2000);
+                // Obiekt Fight ---> Character winner = new Fight().fight(fighter1, fighter2); [winner.getName() win!]
+                Random r = new Random();
+                if (r.nextInt(3) <= 1) {
+                    System.out.println(position1.getName() + " win!");
+                    position1.wins++;
+                    position2.loses++;
+                } else {
+                    System.out.println(position2.getName() + " win!");
+                    position2.wins++;
+                    position1.loses++;
+                }
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("Failed to fight.");
+            }
+        } else {
+            System.out.println("We cant start fight without champions!");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
